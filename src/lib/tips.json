@@ -23,5 +23,30 @@
     "prediction": "Aston Villa Win",
     "odds": 1.85,
     "result": "Pending"
+  },
+  {
+    "id": "3",
+    "date": "2026-01-24T15:00:00.000Z",
+    "match": {
+      "homeTeam": "Manchester United",
+      "awayTeam": "Fulham",
+      "score": "2 - 1"
+    },
+    "league": "Premier League",
+    "prediction": "Man U & Over 2.5",
+    "odds": 11.5,
+    "result": "Won"
+  },
+  {
+    "id": "4",
+    "date": "2026-01-31T15:00:00.000Z",
+    "match": {
+      "homeTeam": "Arsenal",
+      "awayTeam": "Liverpool"
+    },
+    "league": "Premier League",
+    "prediction": "Draw & BTTS",
+    "odds": 12.0,
+    "result": "Pending"
   }
 ]

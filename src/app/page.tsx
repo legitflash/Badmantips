@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/header';
 import { TodaysTips } from '@/components/tips/todays-tips';
 import { HistoryTips } from '@/components/tips/history-tips';
+import { WeeklyOdds } from '@/components/tips/weekly-odds';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { getTips } from '@/lib/data';
 import { isToday, isBefore } from 'date-fns';
@@ -24,6 +25,9 @@ export default function Home() {
               Badman Tips analyzes and gives out the best football outcome focusing on daily 2 to 5 odds.
             </p>
           </div>
+
+          <WeeklyOdds tips={allTips} />
+
           <Tabs defaultValue="today" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               <TabsTrigger value="today">Today's Tips</TabsTrigger>
