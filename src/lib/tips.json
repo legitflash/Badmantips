@@ -4,8 +4,8 @@
     "date": "2024-06-10T10:00:00.000Z",
     "league": "Premier League",
     "match": {
-      "homeTeam": "Crimson Vipers",
-      "awayTeam": "Azure Dragons"
+      "homeTeam": "Man City",
+      "awayTeam": "Arsenal"
     },
     "prediction": "Home Win",
     "confidence": 85,
@@ -17,8 +17,8 @@
     "date": "2024-06-11T10:00:00.000Z",
     "league": "La Liga",
     "match": {
-      "homeTeam": "Golden Griffins",
-      "awayTeam": "Shadow Wolves"
+      "homeTeam": "Real Madrid",
+      "awayTeam": "Barcelona"
     },
     "prediction": "Draw",
     "confidence": 72,
@@ -30,8 +30,8 @@
     "date": "2024-06-12T10:00:00.000Z",
     "league": "Serie A",
     "match": {
-      "homeTeam": "Emerald Serpents",
-      "awayTeam": "Steel Sentinels"
+      "homeTeam": "Inter Milan",
+      "awayTeam": "Juventus"
     },
     "prediction": "Away Win",
     "confidence": 68,
@@ -43,8 +43,8 @@
     "date": "2024-06-13T10:00:00.000Z",
     "league": "Bundesliga",
     "match": {
-      "homeTeam": "Titanium Titans",
-      "awayTeam": "Onyx Outlaws"
+      "homeTeam": "Bayern Munich",
+      "awayTeam": "Dortmund"
     },
     "prediction": "Over 2.5 Goals",
     "confidence": 92,
@@ -56,8 +56,8 @@
     "date": "2024-06-14T10:00:00.000Z",
     "league": "Ligue 1",
     "match": {
-      "homeTeam": "Solar Flares",
-      "awayTeam": "Arctic Avengers"
+      "homeTeam": "Paris SG",
+      "awayTeam": "AS Monaco"
     },
     "prediction": "Both Teams to Score",
     "confidence": 88,
@@ -69,8 +69,8 @@
     "date": "2024-06-25T10:00:00.000Z",
     "league": "Champions League",
     "match": {
-      "homeTeam": "Crimson Vipers",
-      "awayTeam": "Golden Griffins"
+      "homeTeam": "Liverpool",
+      "awayTeam": "Atletico Madrid"
     },
     "prediction": "Home Win",
     "confidence": 75,
@@ -82,8 +82,8 @@
     "date": "2024-06-25T14:00:00.000Z",
     "league": "Champions League",
     "match": {
-      "homeTeam": "Azure Dragons",
-      "awayTeam": "Shadow Wolves"
+      "homeTeam": "Chelsea",
+      "awayTeam": "AC Milan"
     },
     "prediction": "Draw",
     "confidence": 60,
@@ -95,8 +95,8 @@
     "date": "2024-06-28T10:00:00.000Z",
     "league": "Premier League",
     "match": {
-      "homeTeam": "Steel Sentinels",
-      "awayTeam": "Emerald Serpents"
+      "homeTeam": "Man United",
+      "awayTeam": "Tottenham"
     },
     "prediction": "Over 2.5 Goals",
     "confidence": 81,
@@ -108,8 +108,8 @@
     "date": "2024-06-29T10:00:00.000Z",
     "league": "La Liga",
     "match": {
-      "homeTeam": "Titanium Titans",
-      "awayTeam": "Solar Flares"
+      "homeTeam": "Sevilla",
+      "awayTeam": "Valencia"
     },
     "prediction": "Away Win",
     "confidence": 77,
