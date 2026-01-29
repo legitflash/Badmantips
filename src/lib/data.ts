@@ -1,5 +1,5 @@
 import type { Tip } from './types';
-import { addDays, formatISO } from 'date-fns';
+import { addDays, formatISO, startOfMonth, getDaysInMonth, isBefore } from 'date-fns';
 
 const teams = ["Crimson Vipers", "Azure Dragons", "Golden Griffins", "Shadow Wolves", "Emerald Serpents", "Steel Sentinels", "Titanium Titans", "Onyx Outlaws", "Solar Flares", "Arctic Avengers"];
 const leagues = ["Premier League", "La Liga", "Serie A", "Bundesliga", "Ligue 1", "Champions League"];
@@ -25,8 +25,11 @@ export function getTips(): Tip[] {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  for (let i = 0; i < 30; i++) {
-    const date = addDays(today, i);
+  const firstDayOfMonth = startOfMonth(today);
+  const daysInMonth = getDaysInMonth(today);
+
+  for (let i = 0; i < daysInMonth; i++) {
+    const date = addDays(firstDayOfMonth, i);
     const numTipsForDay = Math.floor(Math.random() * 4) + 1; // 1 to 4 tips per day
 
     for (let j = 0; j < numTipsForDay; j++) {
@@ -50,7 +53,7 @@ export function getTips(): Tip[] {
         prediction: predictions[Math.floor(Math.random() * predictions.length)],
         confidence: Math.floor(Math.random() * 50) + 50, // 50-99
         details: details,
-        result: i < 2 ? (Math.random() > 0.5 ? 'Won' : 'Lost') : 'Pending',
+        result: isBefore(date, today) ? (Math.random() > 0.5 ? 'Won' : 'Lost') : 'Pending',
       };
       tips.push(tip);
     }
