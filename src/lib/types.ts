@@ -4,6 +4,7 @@ export type Tip = {
   match: {
     homeTeam: string;
     awayTeam: string;
+    score?: string;
   };
   league: string;
   prediction: string;

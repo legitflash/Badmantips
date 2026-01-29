@@ -35,10 +35,19 @@ export function TipCard({ tip }: { tip: Tip }) {
           <p className="text-sm font-normal text-muted-foreground">vs</p>
           <p>{tip.match.awayTeam}</p>
         </div>
+        
+        {tip.result !== 'Pending' && tip.match.score && (
+          <div className="mt-4 text-center">
+            <p className="text-sm text-muted-foreground">Final Score</p>
+            <p className="text-2xl font-bold text-primary">{tip.match.score}</p>
+          </div>
+        )}
+
         <div className="mt-4 rounded-lg bg-secondary/30 p-3 text-center">
           <p className="text-sm text-muted-foreground">Prediction</p>
           <p className="text-xl font-bold text-primary">{tip.prediction}</p>
         </div>
+
         <div className="mt-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Flame className="h-4 w-4 text-accent" />
             <span>Odds: {tip.odds}</span>
