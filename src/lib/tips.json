@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "1",
+    "date": "2024-01-28T19:00:00.000Z",
+    "match": {
+      "homeTeam": "Napoli",
+      "awayTeam": "Chelsea"
+    },
+    "league": "Club Friendly",
+    "prediction": "Chelsea Win",
+    "odds": 2.10,
+    "result": "Won"
+  }
+]
