@@ -6,6 +6,12 @@ import { Toaster } from '@/components/ui/toaster';
 export const metadata: Metadata = {
   title: 'Badman Tips',
   description: 'Your daily dose of winning predictions, with AI-powered quality assessment.',
+  manifest: '/manifest.json',
+  themeColor: '#27376F',
+  viewport: 'width=device-width, initial-scale=1',
+  icons: {
+    apple: '/icons/icon-192x192.png',
+  },
 };
 
 export default function RootLayout({
