@@ -19,6 +19,11 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 bg-card p-6 rounded-lg shadow-sm">
+            <p className="text-foreground">
+              Badman Tips analyzes and gives out the best football outcome focusing on daily 2 to 5 odds.
+            </p>
+          </div>
           <Tabs defaultValue="today" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               <TabsTrigger value="today">Today's Tips</TabsTrigger>
@@ -34,7 +39,8 @@ export default function Home() {
         </div>
       </main>
       <footer className="py-6 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Badman Tips. All rights reserved.
+        <p>© {new Date().getFullYear()} Badman Tips. All rights reserved.</p>
+        <p className="mt-2 font-semibold text-accent/80">Gamble responsibly.</p>
       </footer>
     </div>
   );
