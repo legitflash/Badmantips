@@ -8,25 +8,17 @@
  * with Admin SDK credentials), which bypasses these security rules.
  *
  * Data Structure:
- * All application data is stored in a single, top-level collection: `/predictions`.
+ * All application data is stored in a single, top-level collection: `/tips`.
  * There are no user-specific subcollections, as the application does not manage user accounts or private data.
  *
  * Key Security Decisions:
- * - Public Read Access: The `/predictions` collection is fully readable by anyone,
+ * - Public Read Access: The `/tips` collection is fully readable by anyone,
  *   including anonymous users, to support the "Today's Tips" and "30-Day Tips" views.
  * - No Client Writes: All client-side write operations (create, update, delete) are
  *   explicitly denied. This is a critical security measure to protect the integrity
  *   of the prediction data from unauthorized changes.
  * - Backend-Managed Data: The rules are designed with the assumption that a trusted
  *   server-side process is responsible for managing the lifecycle of prediction documents.
- *
- * Denormalization for Authorization:
- * This principle is not applicable to this ruleset, as there is no user-specific
- * ownership or role-based access control that would require denormalization.
- *
- * Structural Segregation:
- * This principle is not applicable, as all data is public. There is no need to
- * segregate public and private data into different collections.
  */
 rules_version = '2';
 service cloud.firestore {
@@ -34,18 +26,12 @@ service cloud.firestore {
 
     /**
      * @description
-     * Allows public, read-only access to all predictions. All write operations
+     * Allows public, read-only access to all tips. All write operations
      * are denied to prevent any client-side data manipulation.
      * @path
-     * `/predictions/{predictionId}`
-     * @allow
-     * An anonymous user reads a specific prediction: `(get)` `/predictions/some-prediction-id`.
-     * @deny
-     * Any user (anonymous or authenticated) attempts to create a new prediction: `(create)` `/predictions/new-prediction`.
-     * @principle
-     * Secures a public dataset by making it read-only for clients. Data integrity is maintained by a trusted backend process.
+     * `/tips/{tipId}`
      */
-    match /predictions/{predictionId} {
+    match /tips/{tipId} {
       allow get: if true;
       allow list: if true;
       allow create: if false;

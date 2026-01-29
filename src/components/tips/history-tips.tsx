@@ -31,8 +31,8 @@ export function HistoryTips({ tips }: { tips: Tip[] }) {
   }
 
   const getDayLabel = (dateStr: string) => {
-    const date = new Date(dateStr);
-    date.setMinutes(date.getMinutes() + date.getTimezoneOffset()) // Adjust for timezone to avoid date shifts
+    // By appending T00:00:00, we ensure the date is parsed in the local timezone, not UTC.
+    const date = new Date(`${dateStr}T00:00:00`);
     if (isYesterday(date)) return 'Yesterday';
     return format(date, 'MMMM d');
   }
