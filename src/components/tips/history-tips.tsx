@@ -34,7 +34,7 @@ export function HistoryTips({ tips }: { tips: Tip[] }) {
     const date = new Date(dateStr);
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset()) // Adjust for timezone to avoid date shifts
     if (isYesterday(date)) return 'Yesterday';
-    return format(date, 'EEEE, MMMM d');
+    return format(date, 'MMMM d');
   }
 
   return (
