@@ -1,3 +1,4 @@
+git add .
 # Badman Tips
 
 Welcome to Badman Tips, your daily source for football predictions. This is a Next.js application bootstrapped with Firebase Studio.
