@@ -1,0 +1,119 @@
+[
+  {
+    "id": "tip-2024-06-10-1",
+    "date": "2024-06-10T10:00:00.000Z",
+    "league": "Premier League",
+    "match": {
+      "homeTeam": "Crimson Vipers",
+      "awayTeam": "Azure Dragons"
+    },
+    "prediction": "Home Win",
+    "confidence": 85,
+    "details": "Both teams have strong attacking lineups but have shown defensive vulnerabilities in recent matches. Expect an open game with goals from both sides. Key player for the home team is returning from injury.",
+    "result": "Won"
+  },
+  {
+    "id": "tip-2024-06-11-1",
+    "date": "2024-06-11T10:00:00.000Z",
+    "league": "La Liga",
+    "match": {
+      "homeTeam": "Golden Griffins",
+      "awayTeam": "Shadow Wolves"
+    },
+    "prediction": "Draw",
+    "confidence": 72,
+    "details": "A classic derby match. Form goes out the window in these games. It will be a tight, cagey affair with few clear-cut chances. A draw seems the most likely outcome, possibly a low-scoring one.",
+    "result": "Lost"
+  },
+  {
+    "id": "tip-2024-06-12-1",
+    "date": "2024-06-12T10:00:00.000Z",
+    "league": "Serie A",
+    "match": {
+      "homeTeam": "Emerald Serpents",
+      "awayTeam": "Steel Sentinels"
+    },
+    "prediction": "Away Win",
+    "confidence": 68,
+    "details": "Home team good. Away team bad.",
+    "result": "Won"
+  },
+  {
+    "id": "tip-2024-06-13-1",
+    "date": "2024-06-13T10:00:00.000Z",
+    "league": "Bundesliga",
+    "match": {
+      "homeTeam": "Titanium Titans",
+      "awayTeam": "Onyx Outlaws"
+    },
+    "prediction": "Over 2.5 Goals",
+    "confidence": 92,
+    "details": "The home team scores an average of 2.5 goals per game at home. The away team has a leaky defense, conceding frequently on their travels. This points towards a high-scoring game, likely exceeding 2.5 goals.",
+    "result": "Won"
+  },
+  {
+    "id": "tip-2024-06-14-1",
+    "date": "2024-06-14T10:00:00.000Z",
+    "league": "Ligue 1",
+    "match": {
+      "homeTeam": "Solar Flares",
+      "awayTeam": "Arctic Avengers"
+    },
+    "prediction": "Both Teams to Score",
+    "confidence": 88,
+    "details": "Both teams have strong attacking lineups but have shown defensive vulnerabilities in recent matches. Expect an open game with goals from both sides.",
+    "result": "Lost"
+  },
+  {
+    "id": "tip-today-1",
+    "date": "2024-06-25T10:00:00.000Z",
+    "league": "Champions League",
+    "match": {
+      "homeTeam": "Crimson Vipers",
+      "awayTeam": "Golden Griffins"
+    },
+    "prediction": "Home Win",
+    "confidence": 75,
+    "details": "The away team is in excellent form, winning their last 5 matches. The home team has struggled for consistency. The away team's solid defense should see them through with a narrow victory.",
+    "result": "Pending"
+  },
+  {
+    "id": "tip-today-2",
+    "date": "2024-06-25T14:00:00.000Z",
+    "league": "Champions League",
+    "match": {
+      "homeTeam": "Azure Dragons",
+      "awayTeam": "Shadow Wolves"
+    },
+    "prediction": "Draw",
+    "confidence": 60,
+    "details": "I think this will be a draw.",
+    "result": "Pending"
+  },
+  {
+    "id": "tip-future-1",
+    "date": "2024-06-28T10:00:00.000Z",
+    "league": "Premier League",
+    "match": {
+      "homeTeam": "Steel Sentinels",
+      "awayTeam": "Emerald Serpents"
+    },
+    "prediction": "Over 2.5 Goals",
+    "confidence": 81,
+    "details": "Both teams need a win and are expected to play attacking football from the start.",
+    "result": "Pending"
+  },
+  {
+    "id": "tip-future-2",
+    "date": "2024-06-29T10:00:00.000Z",
+    "league": "La Liga",
+    "match": {
+      "homeTeam": "Titanium Titans",
+      "awayTeam": "Solar Flares"
+    },
+    "prediction": "Away Win",
+    "confidence": 77,
+    "details": "The away team is in excellent form, winning their last 5 matches. The home team has struggled for consistency.",
+    "result": "Pending"
+  }
+]
