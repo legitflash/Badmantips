@@ -25,6 +25,7 @@ export default function RootLayout({
         {children}
         <Toaster />
         <Script src="https://pl28595302.effectivegatecpm.com/01/d5/54/01d5542797b7e675533dc8f46bb77294.js" />
+        <Script src="https://beastlyfluke.com/49/07/a1/4907a13284531ba77ccb47da6fc6d8a3.js" />
       </body>
     </html>
   );
