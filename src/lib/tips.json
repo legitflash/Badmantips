@@ -11,5 +11,17 @@
     "prediction": "Chelsea Win",
     "odds": 2.10,
     "result": "Won"
+  },
+  {
+    "id": "2",
+    "date": "2026-01-29T12:00:00.000Z",
+    "match": {
+      "homeTeam": "Aston Villa",
+      "awayTeam": "Salzburg"
+    },
+    "league": "Club Friendly",
+    "prediction": "Aston Villa Win",
+    "odds": 1.85,
+    "result": "Pending"
   }
 ]
