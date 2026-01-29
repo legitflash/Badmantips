@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "Prediction": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Prediction",
+      "type": "object",
+      "description": "Represents a single prediction tip.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Prediction entity."
+        },
+        "predictionText": {
+          "type": "string",
+          "description": "The actual prediction text or description."
+        },
+        "predictedDate": {
+          "type": "string",
+          "description": "The date for which the prediction is made.",
+          "format": "date-time"
+        },
+        "confidenceLevel": {
+          "type": "number",
+          "description": "A numerical value representing the confidence level of the prediction (e.g., 0.0 to 1.0)."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category or type of prediction (e.g., sports, finance)."
+        }
+      },
+      "required": [
+        "id",
+        "predictionText",
+        "predictedDate",
+        "confidenceLevel",
+        "category"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/predictions/{predictionId}",
+        "definition": {
+          "entityName": "Prediction",
+          "schema": {
+            "$ref": "#/backend/entities/Prediction"
+          },
+          "description": "Stores all prediction data.  Includes 'predictedDate' for querying tips for a specific date range.",
+          "params": [
+            {
+              "name": "predictionId",
+              "description": "Unique identifier for each prediction document."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "Given the requirement for a simple prediction website ('Badman Tips') with no user sign-up required (anonymous access), and focusing on 'Today's Tips' and a '30-Day Tips' view, the optimal Firestore structure involves a single collection to store all predictions.  Since no user-specific data or ownership is involved, authorization independence isn't a primary concern. However, structuring the data to optimize read operations (queries for today's tips or tips within the next 30 days) is key. To support the 'Tip Quality Assessment' feature, this would be run as a scheduled task, not requiring real-time updates from the user, so it does not affect the firestore design.\n\nThe structure prioritizes simple queries to retrieve the necessary data for the UI, focusing on predictability of schema and performance:\n\n1.  **Single `predictions` Collection:**  All prediction documents reside in a single collection.\n2.  **`predictedDate` Field:**  Critical for querying predictions within a date range (today or the next 30 days).\n\nThis design achieves the following:\n\n*   **Authorization Independence:** Not directly applicable since no user-specific authorization is needed for anonymous access.\n*   **QAPs (Rules are not Filters):**  Since all data is effectively public (no user accounts), the main security rule will ensure that the `predictedDate` is valid. Because there is no user-specific data, filtering based on ownership or roles is not required, making `list` operations secure. "
+  }
+}
