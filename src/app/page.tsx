@@ -6,11 +6,9 @@ import { TodaysTips } from '@/components/tips/todays-tips';
 import { HistoryTips } from '@/components/tips/history-tips';
 import { WeeklyOdds } from '@/components/tips/weekly-odds';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy, Timestamp } from 'firebase/firestore';
+import { tips } from '@/lib/data';
 import type { Tip } from '@/lib/types';
-import { isToday, isBefore } from 'date-fns';
-import { Skeleton } from '@/components/ui/skeleton';
+import { isToday, isBefore, compareDesc } from 'date-fns';
 
 function HomePageContent({ allTips }: { allTips: Tip[] }) {
     const todayStart = new Date();
@@ -46,53 +44,19 @@ function HomePageContent({ allTips }: { allTips: Tip[] }) {
 }
 
 
-function LoadingSkeleton() {
-    return (
-      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <Skeleton className="h-16 w-full mb-8" />
-        <Skeleton className="h-48 w-full mb-12" />
-        <div className="w-full max-w-md mx-auto">
-            <Skeleton className="h-10 w-full mb-6" />
-        </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <Skeleton className="h-72 w-full" />
-            <Skeleton className="h-72 w-full" />
-            <Skeleton className="h-72 w-full" />
-            <Skeleton className="h-72 w-full" />
-        </div>
-      </div>
-    );
-}
-
-
 export default function Home() {
-  const firestore = useFirestore();
-
-  const tipsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'tips'), orderBy('date', 'desc'));
-  }, [firestore]);
-
-  const { data: tipsFromDb, isLoading } = useCollection<{
-    date: Timestamp;
-    [key: string]: any;
-  }>(tipsQuery);
-
-  const allTips: Tip[] | null = useMemo(() => {
-    if (!tipsFromDb) return null;
-    return tipsFromDb.map(tip => ({
-      ...tip,
-      date: tip.date.toDate().toISOString(),
-    } as Tip));
-  }, [tipsFromDb]);
+  const allTips: Tip[] = useMemo(() => {
+    // We sort the tips by date here to ensure consistency, like the previous database query did.
+    // Using compareDesc for descending order (newest first).
+    return [...tips].sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  }, []);
 
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Header />
       <main className="flex-1">
         <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-          {isLoading && <LoadingSkeleton />}
-          {!isLoading && allTips && <HomePageContent allTips={allTips} />}
+          <HomePageContent allTips={allTips} />
         </div>
       </main>
       <footer className="py-6 text-center text-sm text-muted-foreground">
