@@ -1,12 +1,9 @@
 import type { Tip } from './types';
-import { subDays, formatISO } from 'date-fns';
-
-const today = new Date();
 
 export const tips: Tip[] = [
   {
     id: '4',
-    date: formatISO(today),
+    date: '2026-01-29T12:00:00.000Z',
     match: {
       homeTeam: 'Aston Villa',
       awayTeam: 'Salzburg',

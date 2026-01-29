@@ -5,20 +5,37 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { TipCard } from './tip-card';
 import { format, isYesterday } from 'date-fns';
 import { Archive } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
 
 export function HistoryTips({ tips }: { tips: Tip[] }) {
-  const groupedTips = tips.reduce((acc, tip) => {
-    const dateStr = format(new Date(tip.date), 'yyyy-MM-dd');
-    if (!acc[dateStr]) {
-      acc[dateStr] = [];
-    }
-    acc[dateStr].push(tip);
-    return acc;
-  }, {} as Record<string, Tip[]>);
-  
-  const sortedDates = Object.keys(groupedTips).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+  const [isClient, setIsClient] = useState(false);
 
-  if (tips.length === 0) {
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const groupedTips = useMemo(() => {
+    if (!isClient) return {};
+    return tips.reduce((acc, tip) => {
+      const dateStr = format(new Date(tip.date), 'yyyy-MM-dd');
+      if (!acc[dateStr]) {
+        acc[dateStr] = [];
+      }
+      acc[dateStr].push(tip);
+      return acc;
+    }, {} as Record<string, Tip[]>);
+  }, [tips, isClient]);
+  
+  const sortedDates = useMemo(() => Object.keys(groupedTips).sort((a, b) => new Date(b).getTime() - new Date(a).getTime()), [groupedTips]);
+
+  const getDayLabel = (dateStr: string) => {
+    // By appending T00:00:00, we ensure the date is parsed in the local timezone, not UTC.
+    const date = new Date(`${dateStr}T00:00:00`);
+    if (isYesterday(date)) return 'Yesterday';
+    return format(date, 'MMMM d');
+  }
+
+  if (!isClient || tips.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted bg-card p-12 text-center mt-6">
         <Archive className="mx-auto h-12 w-12 text-muted-foreground" />
@@ -30,15 +47,8 @@ export function HistoryTips({ tips }: { tips: Tip[] }) {
     );
   }
 
-  const getDayLabel = (dateStr: string) => {
-    // By appending T00:00:00, we ensure the date is parsed in the local timezone, not UTC.
-    const date = new Date(`${dateStr}T00:00:00`);
-    if (isYesterday(date)) return 'Yesterday';
-    return format(date, 'MMMM d');
-  }
-
   return (
-    <Accordion type="single" collapsible defaultValue={sortedDates[0]} className="w-full space-y-4">
+    <Accordion type="single" collapsible defaultValue={sortedDates.length > 0 ? sortedDates[0] : undefined} className="w-full space-y-4">
       {sortedDates.map(date => (
         <AccordionItem value={date} key={date} className="border-none rounded-xl bg-card shadow-sm overflow-hidden">
           <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline data-[state=open]:bg-secondary/50">

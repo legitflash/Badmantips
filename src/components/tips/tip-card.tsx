@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Calendar, CircleDashed, Flame, Trophy, XCircle } from 'lucide-react';
 import { format } from 'date-fns';
+import { useState, useEffect } from 'react';
 
 function ResultBadge({ result }: { result: Tip['result'] }) {
   if (result === 'Won') {
@@ -17,13 +18,20 @@ function ResultBadge({ result }: { result: Tip['result'] }) {
 }
 
 export function TipCard({ tip }: { tip: Tip }) {
+  const [formattedDate, setFormattedDate] = useState('');
+
+  useEffect(() => {
+    // This ensures the date is formatted only on the client, avoiding mismatches.
+    setFormattedDate(format(new Date(tip.date), 'MMM d, yyyy'));
+  }, [tip.date]);
+
   return (
     <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between mb-2">
           <CardDescription className="flex items-center gap-2 text-xs">
             <Calendar className="h-4 w-4" />
-            {format(new Date(tip.date), 'MMM d, yyyy')}
+            {formattedDate}
           </CardDescription>
           <ResultBadge result={tip.result} />
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Header } from '@/components/layout/header';
 import { TodaysTips } from '@/components/tips/todays-tips';
 import { HistoryTips } from '@/components/tips/history-tips';
@@ -11,11 +11,19 @@ import type { Tip } from '@/lib/types';
 import { isToday, isBefore, compareDesc } from 'date-fns';
 
 function HomePageContent({ allTips }: { allTips: Tip[] }) {
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
+    const [todaysTips, setTodaysTips] = useState<Tip[]>([]);
+    const [historyTips, setHistoryTips] = useState<Tip[]>([]);
+    const [isClient, setIsClient] = useState(false);
 
-    const todaysTips = allTips.filter(tip => isToday(new Date(tip.date)));
-    const historyTips = allTips.filter(tip => isBefore(new Date(tip.date), todayStart));
+    useEffect(() => {
+        // This effect runs only on the client, after hydration
+        const todayStart = new Date();
+        todayStart.setHours(0, 0, 0, 0);
+
+        setTodaysTips(allTips.filter(tip => isToday(new Date(tip.date))));
+        setHistoryTips(allTips.filter(tip => isBefore(new Date(tip.date), todayStart)));
+        setIsClient(true);
+    }, [allTips]);
   
     return (
       <>
@@ -27,24 +35,36 @@ function HomePageContent({ allTips }: { allTips: Tip[] }) {
 
         <WeeklyOdds tips={allTips} />
 
-        <Tabs defaultValue="today" className="w-full">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-            <TabsTrigger value="today">Today's Tips</TabsTrigger>
-            <TabsTrigger value="history">History</TabsTrigger>
-          </TabsList>
-          <TabsContent value="today" className="mt-6">
-            <TodaysTips tips={todaysTips} />
-          </TabsContent>
-          <TabsContent value="history" className="mt-6">
-            <HistoryTips tips={historyTips} />
-          </TabsContent>
-        </Tabs>
+        {isClient ? (
+          <Tabs defaultValue="today" className="w-full">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+              <TabsTrigger value="today">Today's Tips</TabsTrigger>
+              <TabsTrigger value="history">History</TabsTrigger>
+            </TabsList>
+            <TabsContent value="today" className="mt-6">
+              <TodaysTips tips={todaysTips} />
+            </TabsContent>
+            <TabsContent value="history" className="mt-6">
+              <HistoryTips tips={historyTips} />
+            </TabsContent>
+          </Tabs>
+        ) : (
+          <div className="w-full text-center p-12">
+            {/* You could add a loading spinner here */}
+          </div>
+        )}
       </>
     );
 }
 
 
 export default function Home() {
+  const [year, setYear] = useState<number>();
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   const allTips: Tip[] = useMemo(() => {
     // We sort the tips by date here to ensure consistency, like the previous database query did.
     // Using compareDesc for descending order (newest first).
@@ -60,7 +80,7 @@ export default function Home() {
         </div>
       </main>
       <footer className="py-6 text-center text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} Badman Tips. All rights reserved.</p>
+        {year && <p>© {year} Badman Tips. All rights reserved.</p>}
         <p className="mt-2 font-semibold text-accent/80">Gamble responsibly.</p>
       </footer>
     </div>
