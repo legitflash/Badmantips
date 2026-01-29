@@ -7,7 +7,6 @@ export type Tip = {
   };
   league: string;
   prediction: string;
-  confidence: number; // 0-100
-  details: string; // This will be the content for the AI
+  odds: number;
   result?: 'Won' | 'Lost' | 'Pending';
 };
