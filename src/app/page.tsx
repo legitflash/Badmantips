@@ -1,16 +1,18 @@
 import { Header } from '@/components/layout/header';
 import { TodaysTips } from '@/components/tips/todays-tips';
-import { UpcomingTips } from '@/components/tips/upcoming-tips';
+import { HistoryTips } from '@/components/tips/upcoming-tips';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { getTips } from '@/lib/data';
-import { isToday } from 'date-fns';
+import { isToday, isBefore } from 'date-fns';
 
 export default function Home() {
   const allTips = getTips();
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
 
   const todaysTips = allTips.filter(tip => isToday(new Date(tip.date)));
   
-  const upcomingTips = allTips.filter(tip => new Date(tip.date) >= new Date(new Date().setHours(0,0,0,0)));
+  const historyTips = allTips.filter(tip => isBefore(new Date(tip.date), todayStart));
 
   return (
     <div className="flex min-h-screen w-full flex-col">
@@ -20,13 +22,13 @@ export default function Home() {
           <Tabs defaultValue="today" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               <TabsTrigger value="today">Today's Tips</TabsTrigger>
-              <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
+              <TabsTrigger value="history">History</TabsTrigger>
             </TabsList>
             <TabsContent value="today" className="mt-6">
               <TodaysTips tips={todaysTips} />
             </TabsContent>
-            <TabsContent value="upcoming" className="mt-6">
-              <UpcomingTips tips={upcomingTips} />
+            <TabsContent value="history" className="mt-6">
+              <HistoryTips tips={historyTips} />
             </TabsContent>
           </Tabs>
         </div>
