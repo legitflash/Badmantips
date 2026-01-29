@@ -33,12 +33,6 @@ export function WeeklyOdds({ tips }: { tips: Tip[] }) {
     );
   }, [tips]);
   
-  const hasAnyWeeklyOdds = thisWeekTips.length > 0 || lastWeekTips.length > 0;
-  
-  if (!hasAnyWeeklyOdds) {
-      return null;
-  }
-
   const EmptyState = ({ message }: { message: string }) => (
     <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted bg-card p-12 text-center mt-6">
       <CalendarRange className="mx-auto h-12 w-12 text-muted-foreground" />
