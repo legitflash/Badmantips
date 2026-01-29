@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header';
 import { TodaysTips } from '@/components/tips/todays-tips';
-import { HistoryTips } from '@/components/tips/upcoming-tips';
+import { HistoryTips } from '@/components/tips/history-tips';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { getTips } from '@/lib/data';
 import { isToday, isBefore } from 'date-fns';
