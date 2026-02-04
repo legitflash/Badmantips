@@ -2,6 +2,18 @@ import type { Tip } from './types';
 
 export const tips: Tip[] = [
   {
+    id: '5',
+    date: '2026-02-05T12:00:00.000Z',
+    match: {
+      homeTeam: 'Real Betis',
+      awayTeam: 'Atletico Madrid',
+    },
+    league: 'La Liga',
+    prediction: 'Atletico Madrid Win',
+    odds: 2,
+    result: 'Pending',
+  },
+  {
     id: '4',
     date: '2026-01-29T12:00:00.000Z',
     match: {
