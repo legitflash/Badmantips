@@ -19,11 +19,12 @@ export const tips: Tip[] = [
     match: {
       homeTeam: 'Aston Villa',
       awayTeam: 'Salzburg',
+      score: '3:2',
     },
     league: 'UEFA Champions League',
     prediction: 'Aston Villa Win',
     odds: 1.85,
-    result: 'Pending',
+    result: 'Won',
   },
   {
     id: '1',
