@@ -5,7 +5,6 @@ import { Header } from '@/components/layout/header';
 import { TodaysTips } from '@/components/tips/todays-tips';
 import { HistoryTips } from '@/components/tips/history-tips';
 import { WeeklyOdds } from '@/components/tips/weekly-odds';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { tips } from '@/lib/data';
 import type { Tip } from '@/lib/types';
 import { isToday, isBefore, compareDesc } from 'date-fns';
@@ -33,21 +32,20 @@ function HomePageContent({ allTips }: { allTips: Tip[] }) {
           </p>
         </div>
 
-        <WeeklyOdds tips={allTips} />
-
         {isClient ? (
-          <Tabs defaultValue="today" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-              <TabsTrigger value="today">Today's Tips</TabsTrigger>
-              <TabsTrigger value="history">History</TabsTrigger>
-            </TabsList>
-            <TabsContent value="today" className="mt-6">
+          <>
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-center mb-4 text-primary">Today's Tips</h2>
               <TodaysTips tips={todaysTips} />
-            </TabsContent>
-            <TabsContent value="history" className="mt-6">
+            </div>
+
+            <WeeklyOdds tips={allTips} />
+            
+            <div className="mt-12">
+              <h2 className="text-2xl font-bold text-center mb-4 text-primary">History</h2>
               <HistoryTips tips={historyTips} />
-            </TabsContent>
-          </Tabs>
+            </div>
+          </>
         ) : (
           <div className="w-full text-center p-12">
             {/* You could add a loading spinner here */}

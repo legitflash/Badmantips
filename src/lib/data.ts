@@ -7,11 +7,12 @@ export const tips: Tip[] = [
     match: {
       homeTeam: 'Real Betis',
       awayTeam: 'Atletico Madrid',
+      score: '0:5',
     },
     league: 'La Liga',
     prediction: 'Atletico Madrid Win',
     odds: 2,
-    result: 'Pending',
+    result: 'Won',
   },
   {
     id: '4',
