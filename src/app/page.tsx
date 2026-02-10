@@ -8,6 +8,8 @@ import { WeeklyOdds } from '@/components/tips/weekly-odds';
 import { tips } from '@/lib/data';
 import type { Tip } from '@/lib/types';
 import { isToday, isBefore, compareDesc } from 'date-fns';
+import { Button } from '@/components/ui/button';
+import { Send } from 'lucide-react';
 
 function HomePageContent({ allTips }: { allTips: Tip[] }) {
     const [todaysTips, setTodaysTips] = useState<Tip[]>([]);
@@ -40,6 +42,19 @@ function HomePageContent({ allTips }: { allTips: Tip[] }) {
             </div>
 
             <WeeklyOdds tips={allTips} />
+
+            <div className="my-12 rounded-lg bg-card p-6 shadow-sm text-center">
+              <h3 className="text-xl font-bold text-primary mb-2">Join Our Community!</h3>
+              <p className="text-muted-foreground mb-4 max-w-md mx-auto">
+                Get instant updates, exclusive tips, and chat with other members on Telegram.
+              </p>
+              <a href="https://t.me/badmantipsng" target="_blank" rel="noopener noreferrer" className="inline-block">
+                <Button size="lg" className="bg-[#2AABEE] hover:bg-[#2AABEE]/90 text-white shadow-lg transition-transform hover:scale-105">
+                  <Send className="mr-2 h-5 w-5" />
+                  Join Telegram
+                </Button>
+              </a>
+            </div>
             
             <div className="mt-12">
               <h2 className="text-2xl font-bold text-center mb-4 text-primary">History</h2>
