@@ -42,11 +42,11 @@ function HomePageContent({ allTips }: { allTips: Tip[] }) {
             </div>
 
             <WeeklyOdds tips={allTips} />
-
+            
             <div className="my-12 rounded-lg bg-card p-6 shadow-sm text-center">
               <h3 className="text-xl font-bold text-primary mb-2">Join Our Community!</h3>
               <p className="text-muted-foreground mb-4 max-w-md mx-auto">
-                Get instant updates, exclusive tips, and chat with other members on Telegram.
+                Get notified instantly on Telegram whenever new tips are posted.
               </p>
               <a href="https://t.me/badmantipsng" target="_blank" rel="noopener noreferrer" className="inline-block">
                 <Button size="lg" className="bg-[#2AABEE] hover:bg-[#2AABEE]/90 text-white shadow-lg transition-transform hover:scale-105">
